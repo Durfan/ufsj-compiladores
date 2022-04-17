@@ -1,15 +1,14 @@
-import json, re, pprint
+import json, re
 from flask import Flask, request, render_template
 app = Flask(__name__)
 
-
-with open('./data/data.json') as jfile:
+with open(f'{app.root_path}/data/data.json', "r") as jfile:
     data = json.load(jfile)
-
-grammar = data['grammar']
+grammar   = data['grammar']
 tokenType = data['tokenType']
-trTable = data['trTable']
-lex_code = json.dumps(grammar, indent=4, separators=(",",":\t"))
+trTable   = data['trTable']
+reserved  = data['reserved']
+lex_code  = json.dumps(grammar, indent=4, separators=(",",":\t"))
 
 
 @app.route("/")
@@ -35,6 +34,11 @@ def get_transition(c):
         if re.match(key, c):
             return list(grammar.keys()).index(key)
     return None
+
+def get_type(token, state):
+    if token in list(reserved):
+        return 'RESERVADO'
+    return tokenType[str(state)]
 
 def automato(input):
     out = []
@@ -62,7 +66,7 @@ def automato(input):
                 i-=1
                 token = token[:-1].strip()
                 idx = (i+1)-len(token)
-            type = tokenType[str(state)]
+            type = get_type(token,state)
             pos = {'line': line, 'idx': idx}
             out.append({'pos':pos, 'state':state, 'class':type, 'value':token})
             state = 0
