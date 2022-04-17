@@ -1,3 +1,8 @@
 $("#nuke").click(function () {
-  $("#code_input").fadeOut();
+  $("#formCode").fadeOut();
+  $("#btns-form").fadeOut();
+});
+
+$(document).ready(function () {
+  new ClipboardJS('.copythis');
 });

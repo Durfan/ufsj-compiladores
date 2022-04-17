@@ -3,5 +3,12 @@ textarea {
   border: 1px solid #000;
   color: #00ff00;
   padding: 8px;
-  font-family: courier new;
+  font-family: "Lucida Console", Courier, monospace;
+  font-size: 12px;
+}
+
+.token-value {
+  font-family: "Lucida Console", Courier, monospace;
+  font-size: 12px;
+  padding-top: 7px !important;
 }
