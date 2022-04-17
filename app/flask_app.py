@@ -8,12 +8,13 @@ grammar   = data['grammar']
 tokenType = data['tokenType']
 trTable   = data['trTable']
 reserved  = data['reserved']
+final     = data['final']
 
 
 @app.context_processor
 def inject_grammar():
     dump_grammar = json.dumps(grammar, indent=5, separators=(",","\t:"))
-    return dict(grammar=dump_grammar)
+    return dict(grammar=dump_grammar, final=final)
 
 @app.route("/")
 def landing():
@@ -22,9 +23,9 @@ def landing():
 @app.route('/', methods=['POST'])
 def analysis_process():
     code = request.form['code']
-    out  = automato(code)
+    out, path = automato(code)
     dump = json.dumps(out, indent=2)
-    return render_template('index.html', code=code, output=out, jsonDump=dump)
+    return render_template('index.html', path=path, output=out, jsonDump=dump)
 
 def get_transition(c):
     for key,value in grammar.items():
@@ -33,23 +34,22 @@ def get_transition(c):
     return None
 
 def get_type(token, state):
-    if token in list(reserved):
+    if token in reserved:
         return 'RESERVADO'
     return tokenType[str(state)]
 
 def automato(input):
     out = []
+    path = []
     state = 0
-    final = [2,4,7,9,12,13,14,15,16,17,19,20,22,23,
-        25,26,28,29,31,33,34,35,36,37,38,39,40,41,42]
     retract = [2,4,12,20]
-
     i = 0
     line = 1
     token = ''
 
     while i < len(input):
         c = input[i]
+        path.append(state)
         if c == '\n':
             line+=1
 
@@ -59,6 +59,7 @@ def automato(input):
 
         if state in final:
             idx = i
+            path.append(state)
             if state in retract:
                 i-=1
                 token = token[:-1].strip()
@@ -71,4 +72,4 @@ def automato(input):
 
         i+=1
 
-    return out
+    return out, path

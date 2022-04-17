@@ -1,16 +1,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="row my-3">
+<div class="row my-2">
   <div class="col-md-6 position-relative">
-    <h4 class="mt-1"><i class="bi bi-code-square me-1"></i>COD2LEX v0.2</h4>
+    <h4 class="mt-1"><i class="bi bi-code-square me-1"></i>COD2LEX v0.3</h4>
     <form id="code_input" method="post">
       <div class="mb-2">
-        <textarea name="code" class="w-100" id="formCode" rows="14" spellcheck="false" autofocus>{{ code }}</textarea>
+        <textarea name="code" class="w-100" id="formCode" rows="14" spellcheck="false"
+          autofocus>{{ request.form['code'] }}</textarea>
       </div>
-      <div class="d-flex align-items-start flex-wrap">
+      <div class="d-flex align-items-start flex-wrap mb-3">
         <div class="order-md-first order-sm-last flex-fill">
-          <pre id="example-code" class="mb-0" style="font-size: 11px;"></pre>
+          {% if not output %}
+          <pre id="example-code" style="font-size: 11px;"></pre>
+          {% endif %}
         </div>
         <div id="btns-form" class="order-md-last order-sm-first btn-group" role="group">
           <button id="submit" type="submit" class="btn btn-success"><i class="bi bi-hammer me-1"></i>Compilar</button>
@@ -18,9 +21,20 @@
         </div>
       </div>
     </form>
-    <div class="position-absolute bottom-0"><a class="small text-muted text-decoration-none"
-        href="https://github.com/Durfan/ufsj-compiladores"><i class="bi bi-github me-1"></i>Durfan/ufsj-compiladores</a>
+    {% if output %}
+    <div id="path" class="small mb-4">
+      <h6>Transições de estados</h6>
+      {% for s in path %}
+      {% if s == 42 %}
+      <span class="badge bg-danger">{{ "{:02d}".format(s) }}</span>
+      {% elif s in final %}
+      <span class="badge bg-success">{{ "{:02d}".format(s) }}</span>
+      {% else %}
+      <span class="badge bg-light text-dark">{{ "{:02d}".format(s) }}</span>
+      {% endif %}
+      {% endfor %}
     </div>
+    {% endif %}
   </div>
   <div class="col-md-6">
     <ul class="nav nav-tabs" id="tabMenu" role="tablist">
@@ -44,7 +58,8 @@
         role="tabpanel">
         <div class="alert alert-warning small rounded-0 border-0 pb-1 mb-0" role="alert">
           <button type="button" class="btn btn-outline-secondary btn-sm position-absolute top-0 end-0 m-2 copythis"
-            data-clipboard-target="#parsed-grammar"><i class="bi bi-clipboard"></i></button>
+            data-clipboard-target="#parsed-grammar" data-bs-toggle="tooltip" data-bs-placement="bottom"
+            title="Copiar"><i class="bi bi-clipboard"></i></button>
           <pre><code id="parsed-grammar" class="language-json">{{ grammar }}</code></pre>
         </div>
       </div>
@@ -76,12 +91,16 @@
       <div class="tab-pane fade border border-top-0" id="json" role="tabpanel">
         <div class="alert alert-primary small rounded-0 border-0 pb-1 mb-0" role="alert">
           <button type="button" class="btn btn-outline-secondary btn-sm position-absolute top-0 end-0 m-2 copythis"
-            data-clipboard-target="#parsed-json"><i class="bi bi-clipboard"></i></button>
+            data-clipboard-target="#parsed-json" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Copiar"><i
+              class="bi bi-clipboard"></i></button>
           <pre><code id="parsed-json" class="language-json">{{ jsonDump }}</code></pre>
         </div>
       </div>
       {% endif %}
     </div>
   </div>
+</div>
+<div class="row mb-1"><a class="small text-muted text-decoration-none"
+    href="https://github.com/Durfan/ufsj-compiladores"><i class="bi bi-github me-1"></i>Durfan/ufsj-compiladores</a>
 </div>
 {% endblock %}
