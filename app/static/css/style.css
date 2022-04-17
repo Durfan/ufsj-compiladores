@@ -9,6 +9,18 @@ textarea {
 
 .token-value {
   font-family: "Lucida Console", Courier, monospace;
-  font-size: 12px;
-  padding-top: 7px !important;
+  font-size: 11px;
+  padding-top: 6px !important;
+}
+
+.nav-tabs .nav-item .nav-link.active.tab-alpha {
+  background-color: #FFF3CD;
+  color: #664D03;
+  border-bottom-color: #FFF3CD;
+}
+
+.nav-tabs .nav-item .nav-link.active.tab-json {
+  background-color: #CFE2FF;
+  color: #084298;
+  border-bottom-color: #CFE2FF;
 }

@@ -8,29 +8,26 @@ grammar   = data['grammar']
 tokenType = data['tokenType']
 trTable   = data['trTable']
 reserved  = data['reserved']
-lex_code  = json.dumps(grammar, indent=4, separators=(",",":\t"))
 
+
+@app.context_processor
+def inject_grammar():
+    dump_grammar = json.dumps(grammar, indent=5, separators=(",","\t:"))
+    return dict(grammar=dump_grammar)
 
 @app.route("/")
 def landing():
-    return render_template(
-        'index.html', lexemas=lex_code)
+    return render_template('index.html')
 
 @app.route('/', methods=['POST'])
 def analysis_process():
     code = request.form['code']
-    out = automato(code)
+    out  = automato(code)
     dump = json.dumps(out, indent=2)
-    return render_template(
-        'index.html',
-        code=code,
-        lexemas=lex_code,
-        output=out,
-        jsonDump=dump)
-
+    return render_template('index.html', code=code, output=out, jsonDump=dump)
 
 def get_transition(c):
-    for key, value in grammar.items():
+    for key,value in grammar.items():
         if re.match(key, c):
             return list(grammar.keys()).index(key)
     return None
@@ -54,7 +51,7 @@ def automato(input):
     while i < len(input):
         c = input[i]
         if c == '\n':
-            line +=1
+            line+=1
 
         token += c
         tr = get_transition(c)

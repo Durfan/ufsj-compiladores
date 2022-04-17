@@ -2,68 +2,57 @@
 
 {% block content %}
 <div class="row my-3">
-  <div class="col-md-6">
+  <div class="col-md-6 position-relative">
     <h4 class="mt-1"><i class="bi bi-code-square me-1"></i>COD2LEX v0.2</h4>
     <form id="code_input" method="post">
       <div class="mb-2">
         <textarea name="code" class="w-100" id="formCode" rows="14" spellcheck="false" autofocus>{{ code }}</textarea>
       </div>
-      <div class="d-flex justify-content-between">
-        <p><a class="small text-muted text-decoration-none" href="https://github.com/Durfan/ufsj-compiladores"><i
-              class="bi bi-github me-1"></i>Durfan/ufsj-compiladores</a></p>
-        <div id="btns-form" class="btn-group" role="group">
+      <div class="d-flex align-items-start flex-wrap">
+        <div class="order-md-first order-sm-last flex-fill">
+          <pre id="example-code" class="mb-0" style="font-size: 11px;"></pre>
+        </div>
+        <div id="btns-form" class="order-md-last order-sm-first btn-group" role="group">
           <button id="submit" type="submit" class="btn btn-success"><i class="bi bi-hammer me-1"></i>Compilar</button>
           <button id="nuke" type="reset" class="btn btn-danger"><i class="bi bi-radioactive me-1"></i>Nuke</button>
         </div>
       </div>
     </form>
-    <div class="position-relative mt-4">
-      <pre id="example-code" class="mb-0" style="font-size: 11px;">// Exemplo de Entrada
-int main(){
-  // convert uppercase string to lower case
-  char str[25];
-  printf("Enter the string: ");
-  scanf("%s",str);
-
-  for(int i=0;i<=strlen(str);i++){
-      if(str[i]>=65&&str[i]<=90)
-        str[i]=str[i]+32;
-  }
-  printf("\nLower Case String is: %s",str);
-  return 0;
-}</pre>
+    <div class="position-absolute bottom-0"><a class="small text-muted text-decoration-none"
+        href="https://github.com/Durfan/ufsj-compiladores"><i class="bi bi-github me-1"></i>Durfan/ufsj-compiladores</a>
     </div>
   </div>
   <div class="col-md-6">
-    <ul class="nav nav-tabs mb-1" id="tabMenu" role="tablist">
+    <ul class="nav nav-tabs" id="tabMenu" role="tablist">
       <li class="nav-item" role="presentation">
-        <button class="nav-link{% if not output %} active{% endif %}" id="lexema-tab" data-bs-toggle="tab"
+        <button class="nav-link tab-alpha{% if not output %} active{% endif %}" id="lexema-tab" data-bs-toggle="tab"
           data-bs-target="#lexema" type="button" role="tab">&Sigma; Alfabeto</button>
       </li>
       {% if output %}
       <li class="nav-item" role="presentation">
-        <button class="nav-link active" id="output-tab" data-bs-toggle="tab" data-bs-target="#output"
-          type="button" role="tab"><i class="bi bi-braces-asterisk me-1"></i>Output</button>
+        <button class="nav-link active" id="output-tab" data-bs-toggle="tab" data-bs-target="#output" type="button"
+          role="tab"><i class="bi bi-braces-asterisk me-1"></i>Output</button>
       </li>
       <li class="nav-item" role="presentation">
-        <button class="nav-link" id="json-tab" data-bs-toggle="tab" data-bs-target="#json" type="button"
+        <button class="nav-link tab-json" id="json-tab" data-bs-toggle="tab" data-bs-target="#json" type="button"
           role="tab"><i class="bi bi-filetype-json me-1"></i>json</button>
       </li>
       {% endif %}
     </ul>
     <div class="tab-content" id="tabContent">
-      <div class="tab-pane fade {% if not output %} show active{% endif %}" id="lexema" role="tabpanel">
-        <div class="alert alert-warning small border-0 pb-1" role="alert">
+      <div class="tab-pane border border-top-0 fade{% if not output %} show active{% endif %}" id="lexema"
+        role="tabpanel">
+        <div class="alert alert-warning small rounded-0 border-0 pb-1 mb-0" role="alert">
           <button type="button" class="btn btn-outline-secondary btn-sm position-absolute top-0 end-0 m-2 copythis"
             data-clipboard-target="#parsed-grammar"><i class="bi bi-clipboard"></i></button>
-          <pre><code id="parsed-grammar" class="language-json">{{ lexemas }}</code></pre>
+          <pre><code id="parsed-grammar" class="language-json">{{ grammar }}</code></pre>
         </div>
       </div>
       {% if output %}
-      <div class="tab-pane fade show active" id="output" role="tabpanel">
-        <table class="table table-sm small">
+      <div class="tab-pane fade border border-top-0 p-2 show active" id="output" role="tabpanel">
+        <table class="table table-sm table-hover small">
           <thead>
-            <tr>
+            <tr class="small">
               <th scope="col">#</th>
               <th scope="col">state</th>
               <th scope="col">class</th>
@@ -73,9 +62,10 @@ int main(){
           <tbody>
             {% for entry in output %}
             <tr class="{% if entry.class == 'ERROR' %}bg-danger text-white{% endif %}">
-              <th scope="row">({{ "{:02d}".format(entry.pos.line) }},{{ "{:03d}".format(entry.pos.idx) }})</th>
-              <td>{{ "{:02d}".format(entry.state) }}</td>
-              <td>{{ entry.class }}</td>
+              <th class="small" scope="row">({{ "{:02d}".format(entry.pos.line) }},{{ "{:03d}".format(entry.pos.idx) }})
+              </th>
+              <td class="small text-center">{{ "{:02d}".format(entry.state) }}</td>
+              <td class="small">{{ entry.class }}</td>
               <td class="token-value align-middle">{{ entry.value }}</td>
             </tr>
             {% endfor %}
@@ -83,8 +73,8 @@ int main(){
         </table>
         <p class="text-muted small mb-0">{{ output|length }} tokens</p>
       </div>
-      <div class="tab-pane fade" id="json" role="tabpanel">
-        <div class="alert alert-primary small border-0 pb-1" role="alert">
+      <div class="tab-pane fade border border-top-0" id="json" role="tabpanel">
+        <div class="alert alert-primary small rounded-0 border-0 pb-1 mb-0" role="alert">
           <button type="button" class="btn btn-outline-secondary btn-sm position-absolute top-0 end-0 m-2 copythis"
             data-clipboard-target="#parsed-json"><i class="bi bi-clipboard"></i></button>
           <pre><code id="parsed-json" class="language-json">{{ jsonDump }}</code></pre>
