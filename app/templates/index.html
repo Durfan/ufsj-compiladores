@@ -42,6 +42,10 @@
         <button class="nav-link tab-alpha{% if not output %} active{% endif %}" id="lexema-tab" data-bs-toggle="tab"
           data-bs-target="#lexema" type="button" role="tab">&Sigma; Alfabeto</button>
       </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="automato-tab" data-bs-toggle="tab" data-bs-target="#automato" type="button"
+          role="tab"><i class="bi bi-node-plus me-1"></i>Autômato</button>
+      </li>
       {% if output %}
       <li class="nav-item" role="presentation">
         <button class="nav-link active" id="output-tab" data-bs-toggle="tab" data-bs-target="#output" type="button"
@@ -62,6 +66,9 @@
             title="Copiar"><i class="bi bi-clipboard"></i></button>
           <pre><code id="parsed-grammar" class="language-json">{{ grammar }}</code></pre>
         </div>
+      </div>
+      <div class="tab-pane fade border border-top-0 p-2" id="automato" role="tabpanel">
+        <div id="graph"></div>
       </div>
       {% if output %}
       <div class="tab-pane fade border border-top-0 p-2 show active" id="output" role="tabpanel">
