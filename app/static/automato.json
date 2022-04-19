@@ -1,205 +1,205 @@
 {
   "nodes": [{
       "id": "0",
-      "name": "qs_0",
+      "name": "00: START",
       "color": "yellow"
     },
     {
       "id": "1",
-      "name": "q1"
+      "name": "01"
     },
     {
       "id": "2",
-      "name": "qf_2",
-      "color": "green"
+      "name": "02: ID",
+      "color": "#198754"
     },
     {
       "id": "3",
-      "name": "q3"
+      "name": "03"
     },
     {
       "id": "4",
-      "name": "qf_4",
-      "color": "green"
+      "name": "04: INT",
+      "color": "#198754"
     },
     {
       "id": "5",
-      "name": "q5"
+      "name": "05"
     },
     {
       "id": "6",
-      "name": "q6"
+      "name": "06"
     },
     {
       "id": "7",
-      "name": "qf_7",
-      "color": "green"
+      "name": "07: FLOAT",
+      "color": "#198754"
     },
     {
       "id": "8",
-      "name": "q8"
+      "name": "08"
     },
     {
       "id": "9",
-      "name": "qf_9",
-      "color": "green"
+      "name": "09: LITERAL",
+      "color": "#198754"
     },
     {
       "id": "10",
-      "name": "q10"
+      "name": "10"
     },
     {
       "id": "11",
-      "name": "q11"
+      "name": "11"
     },
     {
       "id": "12",
-      "name": "qf_12",
-      "color": "green"
+      "name": "12: COMMENT",
+      "color": "#198754"
     },
     {
       "id": "13",
-      "name": "qf_13",
-      "color": "green"
+      "name": "13: /",
+      "color": "#198754"
     },
     {
       "id": "14",
-      "name": "qf_14",
-      "color": "green"
+      "name": "14: +",
+      "color": "#198754"
     },
     {
       "id": "15",
-      "name": "qf_15",
-      "color": "green"
+      "name": "15: -",
+      "color": "#198754"
     },
     {
       "id": "16",
-      "name": "qf_16",
-      "color": "green"
+      "name": "16: *",
+      "color": "#198754"
     },
     {
       "id": "17",
-      "name": "qf_17",
-      "color": "green"
+      "name": "17: %",
+      "color": "#198754"
     },
     {
       "id": "18",
-      "name": "q18"
+      "name": "18"
     },
     {
       "id": "19",
-      "name": "qf_19",
-      "color": "green"
+      "name": "19: ==",
+      "color": "#198754"
     },
     {
       "id": "20",
-      "name": "qf_20",
-      "color": "green"
+      "name": "20: =",
+      "color": "#198754"
     },
     {
       "id": "21",
-      "name": "q21"
+      "name": "21"
     },
     {
       "id": "22",
-      "name": "qf_22",
-      "color": "green"
+      "name": "22: !=",
+      "color": "#198754"
     },
     {
       "id": "23",
-      "name": "qf_23",
-      "color": "green"
+      "name": "23: !",
+      "color": "#198754"
     },
     {
       "id": "24",
-      "name": "q24"
+      "name": "24"
     },
     {
       "id": "25",
-      "name": "qf_25",
-      "color": "green"
+      "name": "25: >=",
+      "color": "#198754"
     },
     {
       "id": "26",
-      "name": "qf_26",
-      "color": "green"
+      "name": "26: >",
+      "color": "#198754"
     },
     {
       "id": "27",
-      "name": "q27"
+      "name": "27"
     },
     {
       "id": "28",
-      "name": "qf_28",
-      "color": "green"
+      "name": "28: <=",
+      "color": "#198754"
     },
     {
       "id": "29",
-      "name": "qf_29",
-      "color": "green"
+      "name": "29: <",
+      "color": "#198754"
     },
     {
       "id": "30",
-      "name": "q30"
+      "name": "30"
     },
     {
       "id": "31",
-      "name": "qf_31",
-      "color": "green"
+      "name": "31: ||",
+      "color": "#198754"
     },
     {
       "id": "32",
-      "name": "q32"
+      "name": "32"
     },
     {
       "id": "33",
-      "name": "qf_33",
-      "color": "green"
+      "name": "33: &&",
+      "color": "#198754"
     },
     {
       "id": "34",
-      "name": "qf_34",
-      "color": "green"
+      "name": "34: ,",
+      "color": "#198754"
     },
     {
       "id": "35",
-      "name": "qf_35",
-      "color": "green"
+      "name": "35: ;",
+      "color": "#198754"
     },
     {
       "id": "36",
-      "name": "qf_36",
-      "color": "green"
+      "name": "36: (",
+      "color": "#198754"
     },
     {
       "id": "37",
-      "name": "qf_37",
-      "color": "green"
+      "name": "37: )",
+      "color": "#198754"
     },
     {
       "id": "38",
-      "name": "qf_38",
-      "color": "green"
+      "name": "38: [",
+      "color": "#198754"
     },
     {
       "id": "39",
-      "name": "qf_39",
-      "color": "green"
+      "name": "39: ]",
+      "color": "#198754"
     },
     {
       "id": "40",
-      "name": "qf_40",
-      "color": "green"
+      "name": "40: {",
+      "color": "#198754"
     },
     {
       "id": "41",
-      "name": "qf_41",
-      "color": "green"
+      "name": "41: }",
+      "color": "#198754"
     },
     {
       "id": "42",
-      "name": "qf_42",
-      "color": "green"
+      "name": "42: ERROR",
+      "color": "#198754"
     }
   ],
   "links": [{
@@ -209,11 +209,13 @@
     },
     {
       "source": "0",
-      "target": "1"
+      "target": "1",
+      "name": "[a-zA-Z]"
     },
     {
       "source": "0",
-      "target": "3"
+      "target": "3",
+      "name": "[0-9]"
     },
     {
       "source": "0",
@@ -302,6 +304,7 @@
     {
       "source": "1",
       "target": "1",
+      "name": "[a-zA-Z0-9]",
       "curvature": 0.5
     },
     {
