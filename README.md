@@ -1,5 +1,7 @@
 # Analisador Léxico Webapp
 
+[![Pylint](https://github.com/Durfan/ufsj-compiladores/actions/workflows/pylint.yml/badge.svg?branch=main)](https://github.com/Durfan/ufsj-compiladores/actions/workflows/pylint.yml)
+
 ## Install (w/ Virtual Environment)
 
 ```sh
