@@ -4,12 +4,13 @@ on: [push]
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v2
     - name: Set up Python 3.8
-      uses: actions/setup-python@v3
+      uses: actions/setup-python@v1
       with:
         python-version: 3.8
     - name: Install dependencies
@@ -19,4 +20,10 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Analysing the code with pylint
       run: |
-        pylint $(git ls-files '*.py')
+        python -m pylint --fail-under=10 `find -regextype egrep -regex '(.*.py)$'` |
+        tee pylint.txt
+    - name: Upload pylint.txt as artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: pylint report
+        path: pylint.txt
