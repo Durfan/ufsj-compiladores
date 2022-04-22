@@ -1,9 +1,10 @@
+name: Pylint app
+
 on:
   workflow_dispatch:
 
 jobs:
   test:
-    name: Pylint app
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
