@@ -1,6 +1,6 @@
 # Analisador Léxico Webapp
 
-[![Pylint](https://github.com/Durfan/ufsj-compiladores/actions/workflows/pylint.yml/badge.svg?branch=main)](https://github.com/Durfan/ufsj-compiladores/actions/workflows/pylint.yml)
+[![DeepSource](https://deepsource.io/gh/Durfan/ufsj-compiladores.svg/?label=active+issues&show_trend=true&token=g_lUTck5_HOI0BqcdMHLBCcD)](https://deepsource.io/gh/Durfan/ufsj-compiladores/?ref=repository-badge)
 
 ## Install (w/ Virtual Environment)
 
