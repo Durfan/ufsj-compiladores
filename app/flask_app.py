@@ -5,11 +5,11 @@ app = Flask(__name__)
 
 with open(f'{app.root_path}/data/data.json', "r") as jfile:
     data = json.load(jfile)
-grammar   = data['grammar']
+grammar = data['grammar']
 tokenType = data['tokenType']
-trTable   = data['trTable']
-reserved  = data['reserved']
-final     = data['final']
+trTable = data['trTable']
+reserved = data['reserved']
+final = data['final']
 
 
 @app.context_processor
@@ -32,7 +32,7 @@ def analysis_process():
 
 
 def get_transition(c):
-    for key,value in grammar.items():
+    for key, _unused in grammar.items():
         if re.match(key, c):
             return list(grammar.keys()).index(key)
     return None
@@ -44,7 +44,7 @@ def get_type(token, state):
     return tokenType[str(state)]
 
 
-def automato(input):
+def automato(code):
     out = []
     path = []
     state = 0
@@ -53,8 +53,8 @@ def automato(input):
     line = 1
     token = ''
 
-    while i < len(input):
-        c = input[i]
+    while i < len(code):
+        c = code[i]
         path.append(state)
         if c == '\n':
             line += 1
@@ -70,9 +70,9 @@ def automato(input):
                 i -= 1
                 token = token[:-1].strip()
                 idx = (i+1)-len(token)
-            type = get_type(token, state)
+            tknType = get_type(token, state)
             pos = {'line': line, 'idx': idx}
-            out.append({'pos': pos, 'state': state, 'class': type, 'value': token})
+            out.append({'pos': pos, 'state': state, 'class': tknType, 'value': token})
             state = 0
             token = ''
 
