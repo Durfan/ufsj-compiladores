@@ -54,14 +54,14 @@ def automato(code):
     token = ''
 
     while i < len(code):
-        c = code[i]
+        char = code[i]
         path.append(state)
-        if c == '\n':
+        if char == '\n':
             line += 1
 
-        token += c
-        tr = get_transition(c)
-        state = trTable[str(state)][tr]
+        token += char
+        trs = get_transition(char)
+        state = trTable[str(state)][trs]
 
         if state in final:
             idx = i
@@ -70,9 +70,9 @@ def automato(code):
                 i -= 1
                 token = token[:-1].strip()
                 idx = (i+1)-len(token)
-            tknType = get_type(token, state)
+            tkn_type = get_type(token, state)
             pos = {'line': line, 'idx': idx}
-            out.append({'pos': pos, 'state': state, 'class': tknType, 'value': token})
+            out.append({'pos': pos, 'state': state, 'class': tkn_type, 'value': token})
             state = 0
             token = ''
 
