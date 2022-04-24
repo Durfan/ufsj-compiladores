@@ -1,10 +1,14 @@
+%\documentclass[aspectratio=169]{beamer}
 \documentclass{beamer}
 \usetheme{CambridgeUS}
 
 \usepackage{svg}
-\usepackage{xcolor}
 \usepackage{ragged2e}
+\usepackage{changepage}
 \usepackage{minted}
+%\usepackage[backend=biber,style=numeric-comp,sorting=none]{biblatex}
+%\addbibresource{bibliography.bib}
+
 \usepackage{tikz}
 \usetikzlibrary{
     backgrounds,
@@ -24,7 +28,7 @@
 \subtitle{Analisador Léxico Web App}
 \author{Pablo Cecilio}
 \date{\today}
-\titlegraphic{\includegraphics[width=0.4\textwidth]{img/logo_ufsj02.png}}
+\titlegraphic{\includegraphics[width=0.4\textwidth]{img/logo_ufsj.png}}
 
 \begin{document}
 
@@ -33,7 +37,25 @@
 \end{frame}
 
 \section{Introdução}
-\begin{frame}{\raisebox{-0.2\height}{\includesvg[width=0.5cm]{img/code-square}}~Introdução}
+\begin{frame}{\raisebox{-0.2\height}{\includesvg[width=0.5cm]{img/code-square}}~Sobre}
+
+    \begin{columns}[onlytextwidth,T]
+    \begin{column}{40mm}
+        \includegraphics[width=4cm]{img/webapp.png}
+    \end{column}
+    \begin{column}{\dimexpr\linewidth-40mm-5mm}
+        COD2LEX é um analisador léxico que implementa um autômato finito, reconhecendo (ou não) strings como símbolos válidos de uma linguagem.
+    \end{column}
+    \end{columns}
+
+    \vspace{5mm}
+    \begin{block}{Caracteristicas}
+        \begin{itemize}
+        \item Aplicação em Python
+        \item Wrap em Flask
+        \item Web API
+        \end{itemize}
+    \end{block}
 
 \end{frame}
 
@@ -90,7 +112,6 @@ if estado in final:
 \end{columns}
 \end{frame}
 
-\section{Estrutura de Dados}
 \begin{frame}[fragile]{\raisebox{-0.2\height}{\includesvg[width=0.5cm]{img/code-square}}~Implementação pela Tabela de Transição}
 
 \begin{columns}
@@ -126,5 +147,11 @@ if estado in final:
 \end{column}
 \end{columns}
 \end{frame}
+
+%\section{Referências}
+%\begin{frame}[allowframebreaks]
+%\nocite{*}
+%\printbibliography
+%\end{frame}
 
 \end{document}
