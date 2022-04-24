@@ -1,4 +1,4 @@
-# Analisador Léxico Webapp [![DeepSource](https://deepsource.io/gh/Durfan/ufsj-compiladores.svg/?label=resolved+issues&show_trend=true&token=g_lUTck5_HOI0BqcdMHLBCcD)](https://deepsource.io/gh/Durfan/ufsj-compiladores/?ref=repository-badge)
+# Analisador Léxico Webapp [![DeepSource](https://deepsource.io/gh/Durfan/ufsj-compiladores.svg/?label=resolved+issues&token=g_lUTck5_HOI0BqcdMHLBCcD)](https://deepsource.io/gh/Durfan/ufsj-compiladores/?ref=repository-badge)
 
 Implementação de um autômato finito, que reconhece (ou não) strings como símbolos válidos de uma linguagem.
 
