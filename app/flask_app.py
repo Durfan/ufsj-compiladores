@@ -14,7 +14,7 @@ final = data['final']
 
 @app.context_processor
 def inject_grammar():
-    dump_grammar = json.dumps(grammar, indent=5, separators=(",","\t:"))
+    dump_grammar = json.dumps(grammar, indent=5, separators=(",", "\t:"))
     return dict(grammar=dump_grammar, final=final)
 
 
@@ -48,7 +48,7 @@ def automato(code):
     out = []
     path = []
     state = 0
-    retract = [2,4,12,20]
+    retract = [2, 4, 12, 20]
     i = 0
     line = 1
     token = ''
